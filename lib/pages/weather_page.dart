@@ -5,6 +5,8 @@ import 'package:lottie/lottie.dart';
 import 'package:register/models/weather_model.dart';
 import 'package:register/pages/fiveday_forecast.dart';
 import 'package:register/services/weather_service.dart';
+import 'package:register/widgets/drawer/drawer_manager.dart';
+import 'package:register/widgets/drawer/k_drawer.dart';
 
 class weatherPage extends StatefulWidget {
   const weatherPage({super.key});
@@ -102,6 +104,7 @@ class _MyWidgetState extends State<weatherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: DrawerManager.drawerKey,
       appBar: AppBar(
         backgroundColor: Color(0xFF2B4A54),
         title: Text(
@@ -113,71 +116,76 @@ class _MyWidgetState extends State<weatherPage> {
         ),
         centerTitle: true,
       ),
-      body: Center(
-        child: _weather == null
-            ? CircularProgressIndicator()
-            : Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(_weather!.cityName,
-                      style: TextStyle(fontSize: 24, color: Colors.grey[700])),
-                  Lottie.asset(getWeatherAnimations(_weather?.mainCondition)),
-                  Text("${_weather!.temperature.round()}°C",
-                      style:
-                          TextStyle(fontSize: 20, color: Colors.orange[300])),
-                  Text(_weather!.mainCondition,
-                      style: TextStyle(
-                          fontSize: 24,
+      body: _body(context),
+      drawer: KDrawer(),
+    );
+  }
+
+  Center _body(BuildContext context) {
+    return Center(
+      child: _weather == null
+          ? CircularProgressIndicator()
+          : Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(_weather!.cityName,
+                    style: TextStyle(fontSize: 24, color: Colors.grey[700])),
+                Lottie.asset(getWeatherAnimations(_weather?.mainCondition)),
+                Text("${_weather!.temperature.round()}°C",
+                    style: TextStyle(fontSize: 20, color: Colors.orange[300])),
+                Text(_weather!.mainCondition,
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey[700])),
+                Text("Wind Speed: ${_weather!.windSpeed} m/s",
+                    style: TextStyle(fontSize: 20, color: Colors.grey[700])),
+                Text("Humidity: ${_weather!.humidity}%",
+                    style: TextStyle(fontSize: 20, color: Colors.grey[700])),
+                SizedBox(height: 30),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    getWeatherAdvice(),
+                    style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF2B4A54)),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                SizedBox(height: 30),
+                GestureDetector(
+                  onTap: () {
+                    // Navigate to AuthPage
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => WeatherForecastPage(),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(17),
+                    margin: const EdgeInsets.symmetric(horizontal: 25),
+                    decoration: BoxDecoration(
+                      color: Color(0xFF2B4A54),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "See More / Onani Zambiri",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 17,
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey[700])),
-                  Text("Wind Speed: ${_weather!.windSpeed} m/s",
-                      style: TextStyle(fontSize: 20, color: Colors.grey[700])),
-                  Text("Humidity: ${_weather!.humidity}%",
-                      style: TextStyle(fontSize: 20, color: Colors.grey[700])),
-                  SizedBox(height: 30),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      getWeatherAdvice(),
-                      style: TextStyle(
-                          fontSize: 26,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF2B4A54)),
-                      textAlign: TextAlign.center,
+                        ),
+                      ),
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      // Navigate to AuthPage
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => WeatherForecastPage(),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(17),
-                      margin: const EdgeInsets.symmetric(horizontal: 25),
-                      decoration: BoxDecoration(
-                        color: Color(0xFF2B4A54),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "See More / Onani Zambiri",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-      ),
+                )
+              ],
+            ),
     );
   }
 }

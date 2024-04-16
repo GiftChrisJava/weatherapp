@@ -17,6 +17,7 @@ class HomePage extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 // Navigate to AuthPage
+                print("pressed");
                 Navigator.push(
                   context,
                   MaterialPageRoute(

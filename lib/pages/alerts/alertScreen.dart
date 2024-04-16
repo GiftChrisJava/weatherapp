@@ -1,28 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:register/pages/home_page.dart';
 
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
-
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  var initializationSettingsAndroid =
-      const AndroidInitializationSettings('app_icon');
-  var initializationSettings =
-      InitializationSettings(android: initializationSettingsAndroid);
-  flutterLocalNotificationsPlugin.initialize(initializationSettings);
-  runApp(const MyApp());
-}
-
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class AlertScreen extends StatefulWidget {
+  const AlertScreen({super.key});
 
   @override
-  _MyAppState createState() => _MyAppState();
+  State<AlertScreen> createState() => _AlertScreenState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _AlertScreenState extends State<AlertScreen> {
   late FlutterLocalNotificationsPlugin localNotification;
 
   @override
@@ -49,9 +35,19 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Alerts Management"),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+          child: Center(
+        child: Text("All alerts will be here"),
+      )),
+      floatingActionButton: IconButton(
+        icon: Icon(Icons.notification_add),
+        onPressed: showNotification,
+      ),
     );
   }
 }

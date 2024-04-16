@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:register/models/weather_model.dart';
+import 'package:register/pages/fiveday_forecast.dart';
 import 'package:register/services/weather_service.dart';
 
 class weatherPage extends StatefulWidget {
@@ -86,7 +87,7 @@ class _MyWidgetState extends State<weatherPage> {
     }
 
     // If all conditions are normal
-    return 'According to the weather today, everything is normal. Have a great day!';
+    return 'According to the weather today,the weather conditions are normal';
   }
 
   // init state
@@ -145,6 +146,35 @@ class _MyWidgetState extends State<weatherPage> {
                       textAlign: TextAlign.center,
                     ),
                   ),
+                  GestureDetector(
+                    onTap: () {
+                      // Navigate to AuthPage
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WeatherForecastPage(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(17),
+                      margin: const EdgeInsets.symmetric(horizontal: 25),
+                      decoration: BoxDecoration(
+                        color: Color(0xFF2B4A54),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "See More / Onani Zambiri",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
       ),

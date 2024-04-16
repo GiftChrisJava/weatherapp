@@ -7,11 +7,14 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  //Setting up notifications
   var initializationSettingsAndroid =
       const AndroidInitializationSettings('app_icon');
   var initializationSettings =
       InitializationSettings(android: initializationSettingsAndroid);
   flutterLocalNotificationsPlugin.initialize(initializationSettings);
+
+  
   runApp(const MyApp());
 }
 

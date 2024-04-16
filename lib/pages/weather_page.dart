@@ -110,9 +110,9 @@ class _MyWidgetState extends State<weatherPage> {
         title: Text(
           "Today's weather - Zanyengo Za lero",
           style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[300]),
         ),
         centerTitle: true,
       ),

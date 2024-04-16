@@ -1,5 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:register/pages/alerts/alertScreen.dart';
+import 'package:register/pages/video_player.dart';
 import 'package:register/widgets/drawer/k_drawer_item.dart';
 
 class KDrawer extends StatelessWidget {
@@ -28,7 +31,12 @@ class KDrawer extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (context) => const AlertScreen()))),
           KDrawerItem(
-              leadingIcon: Icons.library_books, title: "Learning Resources"),
+              leadingIcon: Icons.library_books,
+              title: "Learning Resources",
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const MyVideoPlayer()))),
           KDrawerItem(leadingIcon: Icons.settings, title: "Language"),
           KDrawerItem(leadingIcon: Icons.color_lens, title: "sign out"),
         ],

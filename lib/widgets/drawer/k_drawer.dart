@@ -22,11 +22,13 @@ class KDrawer extends StatelessWidget {
           KDrawerItem(leadingIcon: Icons.person, title: profileName),
           KDrawerItem(
               leadingIcon: Icons.add_alert,
-              title: "Alerts",
+              title: " View Alerts",
               onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => const AlertScreen()))),
+          KDrawerItem(
+              leadingIcon: Icons.library_books, title: "Learning Resources"),
           KDrawerItem(leadingIcon: Icons.settings, title: "Language"),
           KDrawerItem(leadingIcon: Icons.color_lens, title: "sign out"),
         ],

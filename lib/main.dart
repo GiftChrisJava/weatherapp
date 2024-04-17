@@ -14,7 +14,6 @@ void main() {
       InitializationSettings(android: initializationSettingsAndroid);
   flutterLocalNotificationsPlugin.initialize(initializationSettings);
 
-  
   runApp(const MyApp());
 }
 

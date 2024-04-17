@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:register/appData.dart';
 import 'package:register/components/button.dart';
 import 'package:register/components/cool_textfields.dart';
-import 'package:register/pages/weather_page.dart';
+import 'package:register/pages/local_or_relief.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -43,7 +43,7 @@ class _LoginPageState extends State<LoginPage> {
 
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => weatherPage()),
+      MaterialPageRoute(builder: (context) => LocalUserOrReliefWorker()),
     );
   }
 

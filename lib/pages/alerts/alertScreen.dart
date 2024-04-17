@@ -60,16 +60,22 @@ class _AlertScreenState extends State<AlertScreen> {
         child: ListView.builder(
           itemCount: dummyNotifications.length,
           itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(dummyNotifications[index]['title']!),
-              titleTextStyle: Theme.of(context)
-                  .primaryTextTheme
-                  .bodyMedium!
-                  .copyWith(
-                      color: Color(0xFF2B4A54),
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600),
-              subtitle: Text(dummyNotifications[index]['subtitle']!),
+            return Row(
+              children: [
+                const CircleAvatar(
+                  backgroundImage: AssetImage("assets/images/cyclone.png"),
+                ),
+                ListTile(
+                    title: Text(dummyNotifications[index]['title']!),
+                    titleTextStyle: Theme.of(context)
+                        .primaryTextTheme
+                        .bodyMedium!
+                        .copyWith(
+                            color: Color(0xFF2B4A54),
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600),
+                    subtitle: Text(dummyNotifications[index]['subtitle']!)),
+              ],
             );
           },
         ),

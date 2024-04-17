@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:register/pages/login_or_register.dart';
+import 'package:register/pages/togglers/login_or_register.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

@@ -29,122 +29,64 @@ class ReliefPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: 80),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ReliefAlertsPage(),
-                    ),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(14),
-                  margin: const EdgeInsets.symmetric(horizontal: 35),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF2B4A54),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "See Relief Worker Alerts",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              KNavigationButtonL(
+                  targetPage: ReliefAlertsPage(),
+                  message: "See Relief Worker Alerts"),
               SizedBox(height: 40),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LocalUserAlertsPage(),
-                    ),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(14),
-                  margin: const EdgeInsets.symmetric(horizontal: 35),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF2B4A54),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "See Local User Alerts",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              KNavigationButtonL(
+                  targetPage: LocalUserAlertsPage(),
+                  message: "See Local User Alerts"),
               SizedBox(height: 40),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => MonitorDisaster(),
-                    ),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(14),
-                  margin: const EdgeInsets.symmetric(horizontal: 35),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF2B4A54),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "Monitor Disaster",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              KNavigationButtonL(
+                  targetPage: MonitorDisaster(), message: "Monitor Disaster"),
               SizedBox(height: 40),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => TrackReliefSupplies(),
-                    ),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(14),
-                  margin: const EdgeInsets.symmetric(horizontal: 35),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF2B4A54),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "Follow Up On Relief Supplies",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ),
-                ),
-              )
+              KNavigationButtonL(
+                  targetPage: TrackReliefSupplies(),
+                  message: "Follow Up On Relief Supplies")
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class KNavigationButtonL extends StatelessWidget {
+  const KNavigationButtonL({
+    super.key,
+    required this.targetPage,
+    required this.message,
+  });
+
+  final Widget targetPage;
+  final String message;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => targetPage,
+          ),
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(14),
+        margin: const EdgeInsets.symmetric(horizontal: 35),
+        decoration: BoxDecoration(
+          color: Color(0xFF2B4A54),
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: Center(
+          child: Text(
+            message,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 17,
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ),
       ),

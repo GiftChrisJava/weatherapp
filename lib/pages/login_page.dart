@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:register/appData.dart';
 import 'package:register/components/button.dart';
 import 'package:register/components/cool_textfields.dart';
-import 'package:register/pages/local_or_relief.dart';
+import 'package:register/pages/togglers/local_or_relief.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
